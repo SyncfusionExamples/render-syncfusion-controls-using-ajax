@@ -17,18 +17,7 @@ namespace Syncfusion_Sample.Controllers
         {
             return View();
         }
-
-        public IActionResult LazyLoad()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult PartialView()
         {
             return View();
         }

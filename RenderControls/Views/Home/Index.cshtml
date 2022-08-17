@@ -2,7 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row" style="margin-top:100px; width: 200px">
+    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+            <ejs-button isPrimary=true content="load partial data only" id="but" onclick="fnLoadPartialPage()">
+            </ejs-button>
+        </div>
+    </div>
 </div>
+
+<div style="border:1px solid black" class="row">
+    Showing Data Loaded Content here...
+    <br />
+    <br />
+    <br />
+    <div id="divRenderBody"></div>
+</div>
+
+<script>
+    function fnLoadPartialPage() {
+        if(document.querySelector("#divRenderBody").childElementCount ==0){
+            var ajax = new ej.base.Ajax('/Home/privacy', 'GET', true);
+            ajax.send().then(function (result) {
+                var fragment = document.createElement('div');
+                fragment.innerHTML = result;
+                ej.base.append([fragment], document.getElementById('divRenderBody'),true);
+            });
+        }
+    }
+</script>
